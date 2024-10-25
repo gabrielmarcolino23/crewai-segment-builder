@@ -1,15 +1,16 @@
-[tool.poetry]
+[project]
 name = "segment_ai"
 version = "0.1.0"
 description = "segment-ai using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    { name = "Your Name", email = "you@example.com" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.0.76.2,<1.0.0",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = ">=0.0.76.2,<1.0.0" }
-
-
-[tool.poetry.scripts]
+[project.scripts]
 segment_ai = "segment_ai.main:run"
 run_crew = "segment_ai.main:run"
 train = "segment_ai.main:train"
@@ -17,5 +18,7 @@ replay = "segment_ai.main:replay"
 test = "segment_ai.main:test"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
