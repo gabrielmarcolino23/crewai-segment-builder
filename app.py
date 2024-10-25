@@ -14,11 +14,11 @@ app = FastAPI()
 load_dotenv()
 
 # Configuração JWT
-# SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-# ALGORITHM = os.getenv("JWT_SECRET_KEY_ALGORITHM")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+ALGORITHM = os.getenv("JWT_SECRET_KEY_ALGORITHM")
 
-# if SECRET_KEY is None or ALGORITHM is None:
-#     raise ValueError("Auth credentials not found")
+if SECRET_KEY is None or ALGORITHM is None:
+    raise ValueError("Auth credentials not found")
 
 class Input(BaseModel):
     prompt: str
@@ -53,4 +53,4 @@ if __name__ == "__main__":
     import uvicorn
 
     print(">>>>>>>>>>>> version V0.0.1")
-    uvicorn.run("my_project.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8085, reload=True)
